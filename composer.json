@@ -8,5 +8,24 @@
             "name": "Flo",
             "email": "florinutz@gmail.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {"Flo\\": "src/"}
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "doctrine/orm": "~2.2,>=2.2.3",
+        "symfony/dependency-injection": "~2.5",
+        "symfony/event-dispatcher": "~2.5",
+        "symfony/console": "~2.5",
+        "symfony/filesystem": "~2.5",
+        "symfony/config": "~2.5",
+        "symfony/stopwatch": "~2.5",
+        "symfony/yaml": "~2.5",
+        "symfony/dom-crawler": "~2.5",
+        "guzzlehttp/guzzle": "4.*",
+        "guzzlehttp/log-subscriber": "~1.0",
+        "guzzlehttp/cache-subscriber": "0.1.*@dev",
+        "guzzlehttp/retry-subscriber": "~1.0"
+    }
 }
