@@ -1,0 +1,12 @@
+{
+    "name": "flo/nimic",
+    "description": "torrentz client for the console",
+    "minimum-stability": "beta",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Flo",
+            "email": "florinutz@gmail.com"
+        }
+    ]
+}
