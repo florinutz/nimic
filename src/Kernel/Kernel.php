@@ -62,6 +62,7 @@ class Kernel
             require_once $cacheFile;
             $containerBuilder = new \CachedContainer;
         }
+        $containerBuilder->set('kernel', $this);
         return $this->container = $containerBuilder;
     }
 

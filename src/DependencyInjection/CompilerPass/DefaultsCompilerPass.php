@@ -14,5 +14,6 @@ class DefaultsCompilerPass implements CompilerPassInterface
         $serviceContainerDefinition = new Definition();
         $serviceContainerDefinition->setSynthetic(true);
         $container->setDefinition('service_container', $serviceContainerDefinition);
+        $container->setDefinition('kernel', $serviceContainerDefinition);
     }
 } 
