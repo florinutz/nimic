@@ -10,7 +10,10 @@
         }
     ],
     "autoload": {
-        "psr-4": {"Flo\\": "src/"}
+        "psr-4": {
+            "Flo\\": "src/",
+            "Flo\\Test\\": "tests/"
+        }
     },
     "require": {
         "php": ">=5.4.0",

@@ -12,7 +12,7 @@ class SearchCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('crawl:search')
+            ->setName('search')
             ->setDescription(
                 'Perform a search'
             )
