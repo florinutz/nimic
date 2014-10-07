@@ -1,4 +1,3 @@
-#!/usr/bin/php
 <?php
 // florin, 10/6/14, 10:26 PM
 use Flo\Kernel\Kernel;
