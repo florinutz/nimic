@@ -2,12 +2,11 @@
 // florin, 10/7/14, 12:03 AM
 namespace Flo\Console\Command;
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Logger\ConsoleLogger;
 
-class SearchCommand extends Command
+class SearchCommand extends BaseCommand
 {
     protected function configure()
     {

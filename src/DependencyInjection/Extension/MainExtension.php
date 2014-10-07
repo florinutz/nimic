@@ -1,6 +1,6 @@
 <?php
 // florin, 10/7/14, 8:10 PM
-namespace Flo\DependencyInjection;
+namespace Flo\DependencyInjection\Extension;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
@@ -11,10 +11,7 @@ class MainExtension implements ExtensionInterface
 {
     public function load(array $configs, ContainerBuilder $container)
     {
-        $loader = new XmlFileLoader(
-            $container,
-            new FileLocator(__DIR__.'/../..')
-        );
+        $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../../..'));
         $loader->load('services.xml');
     }
 
@@ -55,4 +52,5 @@ class MainExtension implements ExtensionInterface
     {
         return 'torrentz';
     }
-} 
+
+}

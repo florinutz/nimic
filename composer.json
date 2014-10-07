@@ -1,6 +1,7 @@
 {
     "name": "flo/nimic",
     "description": "torrentz client for the console",
+    "keywords": ["flo", "torrentz.com", "torrentz.eu", "torrentz", "torrents", "crawler", "cron"],
     "minimum-stability": "beta",
     "license": "MIT",
     "authors": [
@@ -14,6 +15,19 @@
             "Flo\\": "src/",
             "Flo\\Test\\": "tests/"
         }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "mkdir -p cache logs",
+            "chmod 777 cache logs"
+        ],
+        "post-update-cmd": [
+            "mkdir -p cache logs",
+            "chmod 777 cache logs"
+        ]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.1.*"
     },
     "require": {
         "php": ">=5.4.0",
