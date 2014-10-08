@@ -8,7 +8,14 @@ You can clone the [Github repo][1] or require [flo/nimic][2] in your composer.js
 
 Basic usage
 -----------
+Inside your app put this in somefile.php
+
 ```php
+/**
+ * If you use composer you should use its autoloader:
+ */
+require 'vendor/autoload.php';
+
 $kernel = new \Flo\Nimic\Kernel\NimiKernel;
 /**
  * This is a Symfony2 container
@@ -22,7 +29,7 @@ $app = $container->get('app');
 $app->run();
 ```
 
-Defining a new command
+Adding a new command
 ----------------------
 You basically have to [create your container extension][5], [create your new command class][3] tagged as'command' and then [add its definition][4] to the container through the extension.
 
