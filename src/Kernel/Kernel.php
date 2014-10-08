@@ -10,7 +10,6 @@ use Flo\Nimic\DependencyInjection\Extension\MainExtension;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Dumper\PhpDumper;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use Flo\Nimic\DependencyInjection\CompilerPass\DefaultsCompilerPass;
 use Flo\Nimic\DependencyInjection\CompilerPass\CommandCompilerPass;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -53,7 +52,6 @@ class Kernel implements ContainerAwareInterface
 
     private function addDefaultCompilerPasses(ContainerBuilder $container)
     {
-        $container->addCompilerPass(new DefaultsCompilerPass());
         $container->addCompilerPass(new CommandCompilerPass());
     }
 
@@ -67,7 +65,7 @@ class Kernel implements ContainerAwareInterface
 
     protected function getCacheDir()
     {
-        return $this->getRootDir() . '/cache';
+        return false;
     }
 
     /**
