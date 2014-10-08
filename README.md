@@ -2,14 +2,14 @@
 A console app backbone with a cacheable dependency injection container
 
 ## Installation
-You can clone the [Github repo][1] or require [flo/nimic][2] in your composer.json.
+You can clone the [Github repo][1], but the recommended method is through composer. Require [flo/nimic][2] in your composer.json.
 
 ## Basic usage
 Inside your app put this in somefile.php
 
 ```php
 /**
- * If you use composer you should use its autoloader:
+ * composer  autoloader:
  */
 require 'vendor/autoload.php';
 
