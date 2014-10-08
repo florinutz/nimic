@@ -29,9 +29,9 @@ $app->run();
 ## Adding a new command
 You basically have to 
 
-1. [create your container extension][5]
-2. [create your new command class][3] tagged **command** 
-3. using the extension, [add its definition][4] to the container
+1. [create your extension][5] class
+2. [create your new command class][3] tagged **_command_** 
+3. using the extension, [add the command service definition][4] to the container
 
 In order to register your extension with the container, you'll have to override NimiKernel::getExtensions() (and use your Kernel from now on). 
 This method should return an array of ExtensionInterface instances.
@@ -60,6 +60,7 @@ do
 ```php
 $kernel = new YourCustomKernel;
 ```
+Using the extension, you can add any service to the container, not just Command classes.
 
 ## example.php
 ```php
