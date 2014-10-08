@@ -5,4 +5,5 @@ $kernel = new Flo\Nimic\Kernel\NimiKernel(true);
 $container = $kernel->getContainer();
 $app = $container->get('app');
 $logger = $container->get('logger');
+
 $app->run();

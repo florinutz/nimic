@@ -23,9 +23,9 @@
         <service id="service_container" synthetic="true" />
         <service id="kernel" synthetic="true" />
 
-        <service id="command.search" class="%search.command.class%">
-            <tag name="command" />
-        </service>
+        <!--<service id="command.search" class="%search.command.class%">-->
+            <!--<tag name="command" />-->
+        <!--</service>-->
 
     </services>
 </container>
