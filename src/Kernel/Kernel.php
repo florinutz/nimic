@@ -18,13 +18,13 @@ class Kernel
     /** @var ContainerBuilder */
     protected $container;
 
-    /** @var bool */
-    protected $debug;
-
     /** @var EventDispatcherInterface */
     protected $dispatcher;
 
-    function __construct($debug)
+    /** @var bool */
+    protected $debug;
+
+    function __construct($debug=false)
     {
         $this->setDebug($debug);
         $this->container = $this->getContainer();
