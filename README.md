@@ -1,13 +1,10 @@
-Nimic
-=====
+# Nimic
 A console app backbone with a cacheable dependency injection container
 
-Installation
-------------
+## Installation
 You can clone the [Github repo][1] or require [flo/nimic][2] in your composer.json.
 
-Basic usage
------------
+## Basic usage
 Inside your app put this in somefile.php
 
 ```php
@@ -29,9 +26,11 @@ $app = $container->get('app');
 $app->run();
 ```
 
-Adding a new command
-----------------------
-You basically have to [create your container extension][5], [create your new command class][3] tagged as'command' and then [add its definition][4] to the container through the extension.
+## Adding a new command
+You basically have to 
+1. [create your container extension][5]
+2. [create your new command class][3] tagged **command** 
+3. using the extension, [add its definition][4] to the container
 
 In order to register your extension with the container, you'll have to override NimiKernel::getExtensions() (and use your Kernel from now on). 
 This method should return an array of ExtensionInterface instances.
@@ -61,8 +60,7 @@ do
 $kernel = new YourCustomKernel;
 ```
 
-example.php
------------
+## example.php
 ```php
 /**
  * If you use composer you should use its autoloader:
