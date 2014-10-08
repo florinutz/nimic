@@ -1,5 +1,6 @@
 # Nimic
-A console app backbone with a cacheable dependency injection container
+A backbone for solid php command line applications, based on symfony components.
+Nimic combines a Dependency Injection container, an Event Dispatcher, the Config and Console components, Monolog and phpUnit.
 
 ## Installation
 You can clone the [github repo][1], but the recommended method is through composer. Require [flo / nimic][2] in your composer.json.
