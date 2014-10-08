@@ -4,8 +4,10 @@ namespace Flo\Nimic\Kernel;
 
 use Symfony\Component\Config\ConfigCache;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Flo\Nimic\DependencyInjection\Extension\MainExtension;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Dumper\PhpDumper;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Flo\Nimic\DependencyInjection\CompilerPass\DefaultsCompilerPass;
@@ -13,7 +15,7 @@ use Flo\Nimic\DependencyInjection\CompilerPass\CommandCompilerPass;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-class Kernel
+class Kernel implements ContainerAwareInterface
 {
     /** @var ContainerBuilder */
     protected $container;
@@ -27,7 +29,7 @@ class Kernel
     function __construct($debug=false)
     {
         $this->setDebug($debug);
-        $this->container = $this->getContainer();
+        $this->setContainer($this->getContainer());
         $this->dispatcher = new EventDispatcher();
     }
 
@@ -152,7 +154,6 @@ class Kernel
     protected function buildContainerWithCache($cacheFile, $cachedContainerClassName)
     {
         $containerConfigCache = new ConfigCache($cacheFile, $this->isDebug());
-        $cachedContainerClassName = '\\' . $cachedContainerClassName;
         if (! $containerConfigCache->isFresh()) {
             $containerBuilder = $this->buildContainer();
             $dumper = new PhpDumper($containerBuilder);
@@ -161,9 +162,20 @@ class Kernel
         }
         else {
             require_once $cacheFile;
+            $cachedContainerClassName = '\\' . $cachedContainerClassName;
             $containerBuilder = new $cachedContainerClassName;
             return $containerBuilder;
         }
     }
 
-} 
+    /**
+     * Sets the Container.
+     *
+     * @param ContainerInterface|null $container A ContainerInterface instance or null
+     * @api
+     */
+    public function setContainer(ContainerInterface $container = null)
+    {
+        $this->container = $container;
+    }
+}

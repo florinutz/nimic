@@ -11,8 +11,6 @@
 
     <services>
 
-        <service id="app" class="%app.class%" />
-
         <service id="command.search" class="%search.command.class%">
             <tag name="command" />
         </service>
