@@ -2,7 +2,7 @@
 A console app backbone with a cacheable dependency injection container
 
 ## Installation
-You can clone the [github repo][1], but the recommended method is through composer. Require [flo/nimic][2] in your composer.json.
+You can clone the [github repo][1], but the recommended method is through composer. Require [flo / nimic][2] in your composer.json.
 
 ## Basic usage
 Inside your app put this in somefile.php
@@ -96,8 +96,12 @@ $app = $container->get('app');
 
 $app->run();
 ```
+
+## Testing Commands
+See [this][6].
 [1]: https://github.com/florinutz/nimic
 [2]: https://packagist.org/packages/flo/nimic
 [3]: http://symfony.com/doc/current/components/console/introduction.html#creating-a-basic-command
 [4]: http://symfony.com/doc/current/components/dependency_injection/definitions.html
 [5]: http://symfony.com/doc/current/components/dependency_injection/compilation.html#managing-configuration-with-extensions
+[6]: http://symfony.com/doc/current/components/console/introduction.html#testing-commands
