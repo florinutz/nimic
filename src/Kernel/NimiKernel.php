@@ -14,22 +14,21 @@ use Flo\Nimic\DependencyInjection\CompilerPass\CommandCompilerPass;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
-class Kernel implements ContainerAwareInterface
+class NimiKernel implements ContainerAwareInterface
 {
     /** @var ContainerBuilder */
     protected $container;
 
-    /** @var EventDispatcherInterface */
-    protected $dispatcher;
-
     /** @var bool */
     protected $debug;
 
-    function __construct($debug=false)
+    /** @var string */
+    protected $cacheDir;
+
+    function __construct($debug=false, $cacheDir=null)
     {
         $this->setDebug($debug);
         $this->setContainer($this->getContainer());
-        $this->dispatcher = new EventDispatcher();
     }
 
     /**
@@ -58,14 +57,17 @@ class Kernel implements ContainerAwareInterface
     /**
      * @return string
      */
-    protected function getRootDir()
+    public function getCacheDir()
     {
-        return realpath(__DIR__ . '/../..');
+        return $this->cacheDir;
     }
 
-    protected function getCacheDir()
+    /**
+     * @param string $cacheDir
+     */
+    public function setCacheDir($cacheDir)
     {
-        return false;
+        $this->cacheDir = $cacheDir;
     }
 
     /**
@@ -115,7 +117,6 @@ class Kernel implements ContainerAwareInterface
      */
     protected function addKernelParametersToContainer($container)
     {
-        $container->setParameter('root_dir', $this->getRootDir());
         $container->setParameter('cache_dir', $this->getCacheDir());
         $container->setParameter('debug', $this->isDebug());
     }
