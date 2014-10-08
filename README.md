@@ -90,7 +90,7 @@ $container = $kernel->getContainer();
 $app = $container->get('app');
 
 /**
- * Here you can add commands on the fly
+ * Here you can add commands using $app->add()
  * The other method of adding commands is through the custom extension, by defining command services tagges "command"
  */
 
