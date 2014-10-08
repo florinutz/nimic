@@ -28,8 +28,11 @@ $app->run();
 
 ## Adding a new command
 You basically have to 
+
 1. [create your container extension][5]
+
 2. [create your new command class][3] tagged **command** 
+
 3. using the extension, [add its definition][4] to the container
 
 In order to register your extension with the container, you'll have to override NimiKernel::getExtensions() (and use your Kernel from now on). 
