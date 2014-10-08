@@ -1,6 +1,6 @@
 <?php
 // florin, 10/7/14, 12:11 AM
-namespace Flo\DependencyInjection\CompilerPass;
+namespace Flo\Nimic\DependencyInjection\CompilerPass;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;

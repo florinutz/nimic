@@ -1,7 +1,7 @@
 {
     "name": "flo/nimic",
-    "description": "torrentz client for the console",
-    "keywords": ["flo", "torrentz.com", "torrentz.eu", "torrentz", "torrents", "crawler", "cron"],
+    "description": "A console app backbone with a cacheable dependency injection container",
+    "keywords": ["flo", "dependencyinjection", "console", "eventdispatcher", "kernel", "php"],
     "minimum-stability": "beta",
     "license": "MIT",
     "authors": [
@@ -12,37 +12,19 @@
     ],
     "autoload": {
         "psr-4": {
-            "Flo\\": "src/",
-            "Flo\\Test\\": "tests/"
+            "Flo\\Nimic\\": "src/",
+            "Flo\\Nimic\\Test\\": "test/"
         }
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "mkdir -p cache logs",
-            "chmod 777 cache logs"
-        ],
-        "post-update-cmd": [
-            "mkdir -p cache logs",
-            "chmod 777 cache logs"
-        ]
     },
     "require-dev": {
         "phpunit/phpunit": "4.1.*"
     },
     "require": {
         "php": ">=5.4.0",
-        "doctrine/orm": "~2.2,>=2.2.3",
         "symfony/dependency-injection": "~2.5",
         "symfony/event-dispatcher": "~2.5",
-        "symfony/console": "~2.5",
-        "symfony/filesystem": "~2.5",
         "symfony/config": "~2.5",
-        "symfony/stopwatch": "~2.5",
-        "symfony/yaml": "~2.5",
-        "symfony/dom-crawler": "~2.5",
-        "guzzlehttp/guzzle": "4.*",
-        "guzzlehttp/log-subscriber": "~1.0",
-        "guzzlehttp/cache-subscriber": "0.1.*@dev",
-        "guzzlehttp/retry-subscriber": "~1.0"
+        "symfony/console": "~2.5",
+        "symfony/monolog-bridge": "~2.5"
     }
 }

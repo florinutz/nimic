@@ -1,6 +1,5 @@
 composer.lock
 composer.phar
-.idea
 vendor
 cache
 logs

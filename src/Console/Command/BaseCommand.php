@@ -1,6 +1,6 @@
 <?php
 // florin, 10/7/14, 10:53 PM
-namespace Flo\Console\Command;
+namespace Flo\Nimic\Console\Command;
 
 use Symfony\Component\Console\Command\Command as SymfonyBaseCommand;
 use Symfony\Component\Console\Input\InputInterface;

@@ -1,6 +1,6 @@
 <?php
 // florin, 10/7/14, 8:10 PM
-namespace Flo\DependencyInjection\Extension;
+namespace Flo\Nimic\DependencyInjection\Extension;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
@@ -50,7 +50,7 @@ class MainExtension implements ExtensionInterface
      */
     public function getAlias()
     {
-        return 'torrentz';
+        return 'nimic';
     }
 
 }

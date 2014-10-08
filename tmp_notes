@@ -1,0 +1,9 @@
+"symfony/filesystem": "~2.5",
+"symfony/stopwatch": "~2.5",
+"symfony/yaml": "~2.5",
+"symfony/dom-crawler": "~2.5",
+"guzzlehttp/guzzle": "4.*",
+"guzzlehttp/log-subscriber": "~1.0",
+"guzzlehttp/cache-subscriber": "0.1.*@dev",
+"guzzlehttp/retry-subscriber": "~1.0",
+"doctrine/orm": "~2.2,>=2.2.3"

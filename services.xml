@@ -6,7 +6,7 @@
 
     <parameters>
         <parameter key="app.class">Symfony\Component\Console\Application</parameter>
-        <parameter key="search.command.class">Flo\Console\Command\SearchCommand</parameter>
+        <parameter key="search.command.class">Flo\Nimic\Console\Command\SearchCommand</parameter>
     </parameters>
 
     <services>
