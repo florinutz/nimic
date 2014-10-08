@@ -64,6 +64,8 @@ Using the extension, you can add any service to the container, not just Command 
 
 ## example.php
 ```php
+#!/usr/bin/env php
+<?php
 /**
  * If you use composer you should use its autoloader:
  */
