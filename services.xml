@@ -14,14 +14,18 @@
 
     <services>
 
-        <service id="app" class="%app.class%"><tag name="default" /></service>
+        <service id="kernel" synthetic="true" />
+        <service id="app" class="%app.class%">
+            <tag name="default" />
+            <argument>%app.name%</argument>
+            <argument>%app.version%</argument>
+        </service>
         <service id="dispatcher" class="%dispatcher.class%"><tag name="default" /></service>
         <service id="logger" class="%logger.class%">
             <argument>nimic</argument>
             <tag name="default" />
         </service>
         <service id="service_container" synthetic="true" />
-        <service id="kernel" synthetic="true" />
 
         <service id="command.test" class="%test.command.class%">
             <tag name="command" />
