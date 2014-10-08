@@ -13,9 +13,6 @@ class MainExtension implements ExtensionInterface
     {
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../../..'));
         $loader->load('services.xml');
-        $definition = new \Symfony\Component\DependencyInjection\Definition('Flo\Nimic\Console\Command\SearchCommand');
-        $definition->addTag('command');
-        $container->setDefinition('command.search', $definition);
     }
 
     /**

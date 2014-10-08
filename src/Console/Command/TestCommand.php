@@ -6,14 +6,14 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Logger\ConsoleLogger;
 
-class SearchCommand extends BaseCommand
+class TestCommand extends Command
 {
     protected function configure()
     {
         $this
-            ->setName('search')
+            ->setName('test')
             ->setDescription(
-                'Perform a search'
+                'Perform a ****'
             )
         ;
     }
@@ -21,6 +21,6 @@ class SearchCommand extends BaseCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $logger = new ConsoleLogger($output);
-        $logger->alert('plm', ['caca' => 'maca']);
+        $logger->alert('test', ['caca' => 'maca']);
     }
 } 

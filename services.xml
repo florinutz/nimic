@@ -5,11 +5,11 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="app.class">Symfony\Component\Console\Application</parameter>
+        <parameter key="app.class">Flo\Nimic\Console\Application</parameter>
         <parameter key="dispatcher.class">Symfony\Component\EventDispatcher\EventDispatcher</parameter>
         <parameter key="logger.class">Monolog\Logger</parameter>
 
-        <parameter key="search.command.class">Flo\Nimic\Console\Command\SearchCommand</parameter>
+        <parameter key="test.command.class">Flo\Nimic\Console\Command\TestCommand</parameter>
     </parameters>
 
     <services>
@@ -23,9 +23,9 @@
         <service id="service_container" synthetic="true" />
         <service id="kernel" synthetic="true" />
 
-        <!--<service id="command.search" class="%search.command.class%">-->
-            <!--<tag name="command" />-->
-        <!--</service>-->
+        <service id="command.test" class="%test.command.class%">
+            <tag name="command" />
+        </service>
 
     </services>
 </container>
