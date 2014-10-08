@@ -16,3 +16,11 @@ $container = $kernel->getContainer();
 $app = $container->get('app');
 $app->run();
 ```
+
+Installation
+------------
+
+You can clone the [Github repo][1] or require [flo/nimic][2] in your composer.json.
+
+[1]: https://github.com/florinutz/nimic
+[2]: https://packagist.org/packages/flo/nimic
