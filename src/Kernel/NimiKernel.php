@@ -12,10 +12,10 @@ use Flo\Nimic\DependencyInjection\Extension\MainExtension;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Dumper\PhpDumper;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
-use Flo\Nimic\DependencyInjection\CompilerPass\CommandCompilerPass;
 use Symfony\Component\EventDispatcher\DependencyInjection\RegisterListenersPass;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\Debug\Debug;
+use Flo\Nimic\DependencyInjection\CompilerPass\CommandCompilerPass;
 
 class NimiKernel implements ContainerAwareInterface
 {
