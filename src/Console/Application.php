@@ -14,6 +14,16 @@ class Application extends SymfonyApplication implements ContainerAwareInterface
     protected $container;
 
     /**
+     * Allowing $this->getApplication()->getContainer() in a command
+     *
+     * @return ContainerBuilder
+     */
+    public function getContainer()
+    {
+        return $this->container;
+    }
+
+    /**
      * Sets the Container.
      *
      * @param ContainerInterface|null $container A ContainerInterface instance or null
@@ -23,13 +33,4 @@ class Application extends SymfonyApplication implements ContainerAwareInterface
     {
         $this->container = $container;
     }
-
-    public function add(Command $command)
-    {
-        if ($command instanceof ContainerAwareInterface) {
-            $command->setContainer($this->container);
-        }
-        return parent::add($command);
-    }
-
 }

@@ -13,6 +13,8 @@ $loader = require 'vendor/autoload.php';
  */
 $kernel = new Flo\Nimic\Kernel\NimiKernel;
 
+$app = $kernel->getApplication();
+
 /**
  * If the kernel returns a writable cache dir ( YourCustomKernel::getCacheDir ) then the container is cached
  */

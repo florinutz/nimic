@@ -2,6 +2,9 @@
 // florin, 10/7/14, 9:52 PM
 namespace Flo\Nimic\Kernel;
 
+use Flo\Nimic\Console\Application;
+use Flo\Nimic\EventDispatcher\Event\NimicEvents;
+use Monolog\Logger;
 use Symfony\Component\Config\ConfigCache;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
@@ -11,6 +14,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\DependencyInjection\Dumper\PhpDumper;
 use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Flo\Nimic\DependencyInjection\CompilerPass\CommandCompilerPass;
+use Symfony\Component\EventDispatcher\DependencyInjection\RegisterListenersPass;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
@@ -58,6 +62,7 @@ class NimiKernel implements ContainerAwareInterface
     private function addDefaultCompilerPasses(ContainerBuilder $container)
     {
         $container->addCompilerPass(new CommandCompilerPass());
+        $container->addCompilerPass(new RegisterListenersPass('dispatcher', 'listener', 'subscriber'));
     }
 
     /**
@@ -219,5 +224,35 @@ class NimiKernel implements ContainerAwareInterface
         $this->version = $version;
         $this->getContainer()->setParameter('app.version', $this->getVersion());
     }
+
+
+    /**
+     * Shortcuts
+     */
+
+    /**
+     * @return EventDispatcher
+     */
+    public function getEventDispatcher()
+    {
+        return $this->container->get('dispatcher');
+    }
+
+    /**
+     * @return Application
+     */
+    public function getApplication()
+    {
+        return $this->container->get('app');
+    }
+
+    /**
+     * @return Logger
+     */
+    public function getLogger()
+    {
+        return $this->container->get('logger');
+    }
+
 
 }
