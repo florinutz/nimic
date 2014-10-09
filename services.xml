@@ -8,8 +8,6 @@
         <parameter key="app.class">Flo\Nimic\Console\Application</parameter>
         <parameter key="dispatcher.class">Symfony\Component\EventDispatcher\ContainerAwareEventDispatcher</parameter>
         <parameter key="logger.class">Monolog\Logger</parameter>
-
-        <parameter key="test.command.class">Flo\Nimic\Console\Command\TestCommand</parameter>
     </parameters>
 
     <services>
