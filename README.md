@@ -1,8 +1,6 @@
 # Nimic
 
-Nimic provides a solid starting point for php console application. Its purpose is to provide a place for your code with access to a cacheable dependency injection container, a console application ready to carry (symfony) commands, an event dispatcher and a monolog instance and phpunit. Moore goodies to come.
-
-Nimic allows adding container extensions, so you can add your own (commands as) services.
+Nimic provides a good starting point for a php console application. Its purpose is to provide a base for your code with access to a (cacheable) dependency injection container, a console application ready to carry (symfony) commands, an event dispatcher and a monolog instance and phpunit. It's basically a facade built upon symfony components.
 
 ## Installation
 You can clone the [github repo][1], but the recommended method is through composer. Require [flo / nimic][2] in your composer.json.
@@ -16,28 +14,39 @@ Inside your app put this in somefile.php
  */
 require 'vendor/autoload.php';
 
-$kernel = new \Flo\Nimic\Kernel\NimiKernel;
+$kernel = new \Flo\Nimic\Kernel\NimiKernel; //extend this kernel!
+
 /**
  * This is a Symfony2 container
  */
 $container = $kernel->getContainer();
+
 /**
- * with some predefined services, like this Console Component application
- * on which you can add your commands:
+ * with some predefined services, like this (Console Component) application 
  */
 $app = $container->get('app');
+
+/**
+ * on which you should add your own commands: 
+ */
+$app->add(new MyCommand);
+
+/**
+ * before running it
+ */
 $app->run();
 ```
+Create your commands [like this][3].
 
-## Adding a new command
-You basically have to 
+## Adding a new service
+You have to 
 
 1. [create your extension][5] class
-2. [create your new command class][3] tagged **_command_** 
-3. using the extension, [add the command service definition][4] to the container
+2. using the extension, [add the command service definition][4] to the container.
+3. (optional) If the service is a command, an event listener or subscriber then you should tag it with **command**, **listener** or **subscriber**. See [this][7] for events.
 
-In order to register your extension with the container, you'll have to override NimiKernel::getExtensions() (and use your Kernel from now on). 
-This method should return an array of ExtensionInterface instances.
+In order to register your extension with the container, you'll have to [override][8] NimiKernel::getExtensions(). 
+This method should return an array of your ExtensionInterface instances, and it's quite possible that you'll need only one extension.
 
 ```php
 class YourCustomKernel extends \Flo\Nimic\Kernel\NimiKernel
@@ -63,7 +72,7 @@ do
 ```php
 $kernel = new YourCustomKernel;
 ```
-Using the extension, you can add any service to the container, not just Command classes.
+Again, using the extension, you can add (or override) any container service, not just Command classes.
 
 ## example.php
 ```php
@@ -110,3 +119,5 @@ See [this][6].
 [4]: http://symfony.com/doc/current/components/dependency_injection/definitions.html
 [5]: http://symfony.com/doc/current/components/dependency_injection/compilation.html#managing-configuration-with-extensions
 [6]: http://symfony.com/doc/current/components/console/introduction.html#testing-commands
+[7]: http://symfony.com/doc/current/cookbook/service_container/event_listener.html
+[8]: http://stackoverflow.com/questions/2994758/what-is-function-overloading-and-overriding-in-php
