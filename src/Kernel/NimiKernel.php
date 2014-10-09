@@ -31,23 +31,6 @@ class NimiKernel implements ContainerAwareInterface
     /** @var string */
     protected $version = "0.1";
 
-    /**
-     * @return string
-     */
-    public function getVersion()
-    {
-        return $this->version;
-    }
-
-    /**
-     * @param string $version
-     */
-    public function setVersion($version)
-    {
-        $this->version = $version;
-        $this->getContainer()->setParameter('app.version', $this->getVersion());
-    }
-
     function __construct($debug=false, $cacheDir=null)
     {
         $this->setDebug($debug);
@@ -218,6 +201,23 @@ class NimiKernel implements ContainerAwareInterface
     {
         $this->name = $name;
         $this->getContainer()->setParameter('app.name', $this->getName());
+    }
+
+    /**
+     * @return string
+     */
+    public function getVersion()
+    {
+        return $this->version;
+    }
+
+    /**
+     * @param string $version
+     */
+    public function setVersion($version)
+    {
+        $this->version = $version;
+        $this->getContainer()->setParameter('app.version', $this->getVersion());
     }
 
 }
