@@ -11,24 +11,28 @@ class CommandCompilerPass implements CompilerPassInterface
     /** @var string */
     protected $commandTag;
 
+    /** @var string */
+    protected $appId;
+
     /**
      * @param string $commandTag Tag name used for identifying commands
      */
-    function __construct($commandTag = 'command')
+    function __construct($appId = 'app', $commandTag = 'command')
     {
+        $this->appId = $appId;
         $this->commandTag = $commandTag;
     }
 
     public function process(ContainerBuilder $container)
     {
-        if ($container->hasDefinition('app')) {
-            $definition = $container->getDefinition('app');
+        if ($container->hasDefinition($this->appId)) {
+            $definition = $container->getDefinition($this->appId);
             $taggedServices = $container->findTaggedServiceIds('command');
             foreach ($taggedServices as $id => $attributes) {
                 $definition->addMethodCall('add', [new Reference($id)]);
                 $commandDefinition = $container->getDefinition($id);
                 if ($container->hasDefinition('service_container') && $this->classIsContainerAware($commandDefinition->getClass())) {
-                    $commandDefinition->addMethodCall('setContainer', [new Reference('service_container')]);
+                    $commandDefinition->addMethodCall('setContainer', [ new Reference('service_container') ]);
                 }
             }
         }

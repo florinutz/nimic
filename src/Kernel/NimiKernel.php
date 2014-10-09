@@ -3,7 +3,6 @@
 namespace Flo\Nimic\Kernel;
 
 use Flo\Nimic\Console\Application;
-use Flo\Nimic\EventDispatcher\Event\NimicEvents;
 use Monolog\Logger;
 use Symfony\Component\Config\ConfigCache;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
@@ -16,7 +15,7 @@ use Symfony\Component\DependencyInjection\Extension\ExtensionInterface;
 use Flo\Nimic\DependencyInjection\CompilerPass\CommandCompilerPass;
 use Symfony\Component\EventDispatcher\DependencyInjection\RegisterListenersPass;
 use Symfony\Component\EventDispatcher\EventDispatcher;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\Debug\Debug;
 
 class NimiKernel implements ContainerAwareInterface
 {
@@ -37,6 +36,9 @@ class NimiKernel implements ContainerAwareInterface
 
     function __construct($debug=false, $cacheDir=null)
     {
+        if ($debug) {
+            Debug::enable();
+        }
         $this->setDebug($debug);
         $this->setContainer($this->getContainer());
     }
@@ -61,7 +63,7 @@ class NimiKernel implements ContainerAwareInterface
 
     private function addDefaultCompilerPasses(ContainerBuilder $container)
     {
-        $container->addCompilerPass(new CommandCompilerPass());
+        $container->addCompilerPass(new CommandCompilerPass('app', 'command'));
         $container->addCompilerPass(new RegisterListenersPass('dispatcher', 'listener', 'subscriber'));
     }
 

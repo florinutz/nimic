@@ -25,6 +25,7 @@
         "symfony/event-dispatcher": "~2.5",
         "symfony/config": "~2.5",
         "symfony/console": "~2.5",
+        "symfony/debug": "~2.5",
         "monolog/monolog": "~1.1"
     }
 }
