@@ -44,6 +44,18 @@ class NimiKernel implements ContainerAwareInterface
     }
 
     /**
+     * This should load any config files it's loaded after extensions
+     * so it should contain extension alias root keys
+     *
+     * @param ContainerBuilder $container
+     * @return bool
+     */
+    protected function loadConfigResourcesIntoContainer(ContainerBuilder $container)
+    {
+        return false;
+    }
+
+    /**
      * @return ContainerBuilder
      */
     public function getContainer()
@@ -92,21 +104,11 @@ class NimiKernel implements ContainerAwareInterface
     }
 
     /**
-     * @param ContainerBuilder $container
-     */
-    private function addMainExtension(ContainerBuilder $container)
-    {
-        $extension = new MainExtension();
-        $container->registerExtension($extension);
-        $container->loadFromExtension($extension->getAlias());
-    }
-
-    /**
      * @return array Array of your own extensions
      */
     protected function getExtensions()
     {
-        return [];
+        return [ new MainExtension() ];
     }
 
     /**
@@ -143,12 +145,12 @@ class NimiKernel implements ContainerAwareInterface
     {
         $containerBuilder = new ContainerBuilder();
         $this->addKernelParametersToContainer($containerBuilder);
-        $this->addMainExtension($containerBuilder);
         foreach ($this->getExtensions() as $extension) {
             /** @var ExtensionInterface $extension */
             $containerBuilder->registerExtension($extension);
             $containerBuilder->loadFromExtension($extension->getAlias());
         }
+        $this->loadConfigResourcesIntoContainer($containerBuilder);
         $this->addDefaultCompilerPasses($containerBuilder);
         foreach ($this->getCompilerPasses() as $compilerPass) {
             /** @var CompilerPassInterface $compilerPass */
